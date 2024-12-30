@@ -5,7 +5,7 @@ Welcome to the **Python Fundamentals Notes** repository! This repository contain
 ## Table of Contents
 
 1. [Introduction to Python](#introduction-to-python)
-2. [Data Types and Variables](#data-types-and-variables)
+2. [Data Types and Variables](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#2-data-types-and-variables)
 3. [Control Flow Statements](#control-flow-statements)
 4. [Functions](#functions)
 5. [Object-Oriented Programming (OOP)](#object-oriented-programming-oop)
