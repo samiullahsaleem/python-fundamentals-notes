@@ -37,49 +37,136 @@ print("Hello, World!")
 ## 2. Data Types and Variables
 
 ### What are Variables?
-Variables are containers used to store data values. In Python, you don't need to declare the type of variable explicitly.
+Variables are containers used to store data values. In Python, variables are dynamically typed, meaning you don’t need to specify the type of variable explicitly—it is inferred based on the value assigned.
 
-### Variable Rules
-- Variable names must start with a letter or an underscore.
-- They cannot start with a number.
-- Variable names are case-sensitive.
+### Characteristics of Variables in Python
+1. **Dynamic Typing**: You can assign different types of values to the same variable.
+2. **Case Sensitivity**: Variable names are case-sensitive (e.g., `name` and `Name` are different).
+3. **No Declaration Required**: Python does not require variable declaration before usage.
 
-### Data Types
-- **Numeric**: int, float, complex
-- **Text**: str
-- **Boolean**: bool
-- **Sequence**: list, tuple, range
-- **Set Types**: set, frozenset
-- **Mapping Type**: dict
+### Variable Naming Rules
+- Must start with a letter or an underscore (_).
+- Cannot start with a number.
+- Can contain alphanumeric characters and underscores.
+- Cannot use reserved keywords (e.g., `if`, `else`, `while`).
 
-### Examples
+### Declaring Variables
 ```python
-# Numeric data types
-integer_value = 10  # int
-float_value = 3.14  # float
-complex_value = 1 + 2j  # complex
+x = 10       # Integer
+name = "Alice"  # String
+pi = 3.14    # Float
+is_valid = True  # Boolean
+```
 
-# Text data type
-string_value = "Python is fun!"
+### Built-in Data Types in Python
+Python offers several built-in data types, categorized as follows:
 
-# Boolean data type
+#### 1. Numeric Types
+- **int**: Integer values (e.g., 10, -5)
+- **float**: Decimal values (e.g., 3.14, -0.001)
+- **complex**: Complex numbers with a real and imaginary part (e.g., 1+2j)
+
+```python
+integer_value = 42       # int
+float_value = 3.1415     # float
+complex_value = 2 + 3j   # complex
+```
+
+#### 2. Text Type
+- **str**: Sequence of characters (e.g., "Hello, World!")
+
+```python
+text = "Python is powerful"
+```
+
+#### 3. Boolean Type
+- **bool**: Represents True or False values
+
+```python
 is_active = True
+is_closed = False
+```
 
-# Data structures
+#### 4. Sequence Types
+- **list**: Ordered, mutable collection of items (e.g., [1, 2, 3])
+- **tuple**: Ordered, immutable collection of items (e.g., (1, 2, 3))
+- **range**: Sequence of numbers generated using `range()`
+
+```python
 list_example = [1, 2, 3, 4]
 tuple_example = (1, 2, 3, 4)
-set_example = {1, 2, 3}
-dict_example = {"key": "value"}
+range_example = range(5)  # 0, 1, 2, 3, 4
+```
+
+#### 5. Set Types
+- **set**: Unordered collection of unique items (e.g., {1, 2, 3})
+- **frozenset**: Immutable version of a set
+
+```python
+set_example = {1, 2, 3, 4}
+frozenset_example = frozenset([1, 2, 3, 4])
+```
+
+#### 6. Mapping Type
+- **dict**: Key-value pairs (e.g., {"key": "value"})
+
+```python
+dict_example = {"name": "Alice", "age": 25}
+```
+
+### Type Checking
+You can check the type of a variable using the `type()` function.
+```python
+x = 10
+print(type(x))  # Output: <class 'int'>
 ```
 
 ### Type Conversion
-Python allows explicit conversion of one data type to another using functions like `int()`, `float()`, `str()`, etc.
+Python allows explicit conversion between data types using functions like `int()`, `float()`, `str()`, etc.
+
+#### Examples:
 ```python
-# Convert int to string
+# Convert int to float
 x = 10
-y = str(x)
-print(type(y))  # Output: <class 'str'>
+x_float = float(x)  # 10.0
+
+# Convert float to int
+y = 3.14
+y_int = int(y)  # 3
+
+# Convert int to string
+z = 42
+z_str = str(z)  # "42"
+
+# Convert list to tuple
+list_example = [1, 2, 3]
+tuple_example = tuple(list_example)  # (1, 2, 3)
 ```
+
+### Mutable vs Immutable Data Types
+- **Mutable**: Can be changed after creation (e.g., `list`, `dict`, `set`).
+- **Immutable**: Cannot be changed after creation (e.g., `int`, `float`, `tuple`, `str`).
+
+```python
+# Mutable example
+my_list = [1, 2, 3]
+my_list.append(4)  # Now my_list is [1, 2, 3, 4]
+
+# Immutable example
+my_tuple = (1, 2, 3)
+# my_tuple[0] = 4  # This will raise an error
+```
+
+### Special Data Types
+- **NoneType**: Represents the absence of a value, denoted by `None`.
+
+```python
+x = None
+print(type(x))  # Output: <class 'NoneType'>
+```
+
+### Advanced Data Structures
+Python also offers advanced structures like `collections` and `dataclasses` for specialized use cases.
 
 ---
 
