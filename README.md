@@ -7,13 +7,13 @@ Welcome to the **Python Fundamentals Notes** repository! This repository contain
 1. [Introduction to Python](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#introduction-to-python)
 2. [Data Types and Variables](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#2-data-types-and-variables)
 3. [Control Flow Statements](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#control-flow-statements)
-4. [Functions](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#functions)
+4. [Functions](#4-functions)
 5. [Object-Oriented Programming (OOP)](#5-object-oriented-programming-oop)
-6. [Modules and Libraries](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#modules-and-libraries)
-7. [File Handling](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#file-handling)
-8. [Error and Exception Handling](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#error-and-exception-handling)
-9. [Python Best Practices](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#python-best-practices)
-10. [Additional Resources](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#additional-resources)
+6. [Modules and Libraries](#6-modules-and-libraries)
+7. [File Handling](#7-file-handling)
+8. [Error and Exception Handling](#8-error-and-exception-handling)
+9. [Python Best Practices](#9-python-best-practices)
+10. [Additional Resources](#10-additional-resources)
 
 ## 1. Introduction to Python
 
