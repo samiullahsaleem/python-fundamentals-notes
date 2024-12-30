@@ -171,12 +171,19 @@ Python also offers advanced structures like `collections` and `dataclasses` for 
 ---
 
 ## 3. Control Flow Statements
+Conditional statements are used to execute a block of code only when a specific condition is met. The main keywords are `if`, `elif`, and `else`.
 
-### What is Control Flow?
-Control flow determines the order in which statements are executed in a program.
+### Syntax
+```python
+if condition:
+    # Code block executed if the condition is True
+elif another_condition:
+    # Code block executed if the previous condition is False and this condition is True
+else:
+    # Code block executed if all previous conditions are False
+```
 
-### Conditional Statements
-Conditional statements execute blocks of code based on conditions.
+### Example
 ```python
 x = 10
 if x > 0:
@@ -187,16 +194,56 @@ else:
     print("Negative number")
 ```
 
-### Loops
-Loops are used to repeat a block of code multiple times.
+### Nested Conditions
+You can nest conditions within one another to handle complex scenarios.
+```python
+x = 10
+y = 5
+if x > 0:
+    if y > 0:
+        print("Both x and y are positive")
+    else:
+        print("x is positive but y is not")
+```
 
-#### For Loop
+---
+
+## Loops
+
+Loops are used to repeat a block of code multiple times. Python provides two main types of loops: `for` and `while`.
+
+### a. For Loop
+The `for` loop iterates over a sequence (like a list, tuple, or range).
+
+#### Syntax
+```python
+for variable in sequence:
+    # Code block executed for each item in the sequence
+```
+
+#### Example
 ```python
 for i in range(5):
     print(i)  # Prints numbers from 0 to 4
 ```
 
-#### While Loop
+#### Iterating Over a List
+```python
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+```
+
+### b. While Loop
+The `while` loop repeats as long as the given condition is `True`.
+
+#### Syntax
+```python
+while condition:
+    # Code block executed as long as the condition is True
+```
+
+#### Example
 ```python
 count = 0
 while count < 5:
@@ -204,17 +251,213 @@ while count < 5:
     count += 1
 ```
 
-### Loop Control Statements
-- **break**: Exits the loop.
-- **continue**: Skips the current iteration.
-- **pass**: Placeholder statement.
+---
+
+## Loop Control Statements
+
+Loop control statements alter the execution flow within a loop. Python supports the following:
+
+### a. Break Statement
+The `break` statement exits the loop immediately.
 ```python
 for i in range(10):
     if i == 5:
-        break
-    if i % 2 == 0:
-        continue
+        break  # Exits the loop when i is 5
     print(i)
+```
+
+### b. Continue Statement
+The `continue` statement skips the current iteration and moves to the next one.
+```python
+for i in range(10):
+    if i % 2 == 0:
+        continue  # Skips even numbers
+    print(i)
+```
+
+### c. Pass Statement
+The `pass` statement acts as a placeholder and does nothing.
+```python
+for i in range(5):
+    if i == 3:
+        pass  # Placeholder for future code
+    print(i)
+```
+
+---
+
+## Control Flow with Exception Handling
+Exception handling influences the program’s control flow by directing it to specific blocks (`except`, `else`, `finally`) depending on whether an error occurs.
+
+### Key Concepts:
+1. **`try` block**: Contains code that may raise exceptions.
+2. **`except` block**: Executes when a specific exception is raised.
+3. **`else` block**: Executes only if no exceptions occur.
+4. **`finally` block**: Always executes, regardless of whether an exception occurred.
+
+### Multiple Exceptions
+You can handle different exceptions using multiple `except` blocks.
+```python
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Invalid input! Please enter a valid number.")
+except ZeroDivisionError:
+    print("Division by zero is not allowed.")
+else:
+    print(f"Result: {result}")
+finally:
+    print("Operation completed.")
+```
+
+### Catch-All Exceptions
+To catch any exception, use a generic `except` block.
+```python
+try:
+    # Risky operation
+except Exception as e:
+    print(f"An error occurred: {e}")
+```
+
+## Raising Exceptions
+You can raise exceptions explicitly using the `raise` keyword.
+```python
+x = -5
+if x < 0:
+    raise ValueError("Negative value not allowed!")
+```
+
+## Nested `try-except` Blocks
+Handle exceptions separately for different segments of code using nested blocks.
+```python
+try:
+    x = int(input("Enter numerator: "))
+    try:
+        y = int(input("Enter denominator: "))
+        print(x / y)
+    except ZeroDivisionError:
+        print("Cannot divide by zero!")
+except ValueError:
+    print("Invalid input! Please enter numeric values.")
+```
+
+## Exception Hierarchy
+Exceptions in Python follow a hierarchical structure:
+- BaseException
+  - Exception
+    - ArithmeticError
+      - ZeroDivisionError
+      - OverflowError
+    - ValueError
+    - KeyError
+    - IndexError
+
+### Example:
+```python
+try:
+    my_list = [1, 2, 3]
+    print(my_list[5])
+except IndexError:
+    print("Index out of range!")
+```
+
+## Custom Exceptions
+Define your own exceptions by creating a class that inherits from `Exception`.
+```python
+class NegativeValueError(Exception):
+    pass
+
+try:
+    num = int(input("Enter a positive number: "))
+    if num < 0:
+        raise NegativeValueError("Negative numbers are not allowed!")
+except NegativeValueError as e:
+    print(e)
+```
+
+## Exception Handling in Loops
+Use exception handling to manage errors within loops.
+```python
+for i in range(5):
+    try:
+        num = int(input(f"Enter a number for iteration {i+1}: "))
+        print(f"Square: {num ** 2}")
+    except ValueError:
+        print("Invalid input, skipping this iteration.")
+```
+
+## Practical Examples
+### File Handling with Exceptions
+```python
+try:
+    with open("nonexistent_file.txt", "r") as file:
+        content = file.read()
+except FileNotFoundError:
+    print("File not found! Please check the filename.")
+finally:
+    print("File operation attempt completed.")
+```
+
+### Database Connection
+```python
+try:
+    connection = connect_to_database()
+    if not connection:
+        raise ConnectionError("Failed to connect to the database!")
+except ConnectionError as e:
+    print(e)
+finally:
+    print("Database operation completed.")
+```
+
+## Best Practices
+1. Be specific with exceptions to avoid masking errors.
+2. Use `finally` for cleanup actions like closing files or database connections.
+3. Avoid bare `except` blocks; always specify the exception.
+4. Log exceptions for debugging purposes.
+5. Use custom exceptions for domain-specific error handling.
+
+---
+
+## Comprehensions with Control Flow
+
+List comprehensions, dictionary comprehensions, and set comprehensions allow concise expressions with control flow.
+
+### List Comprehension with Conditional Logic
+```python
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = [x for x in numbers if x % 2 == 0]
+print(even_numbers)  # Output: [2, 4, 6]
+```
+
+### Dictionary Comprehension with Conditional Logic
+```python
+squares = {x: x**2 for x in range(5) if x % 2 == 0}
+print(squares)  # Output: {0: 0, 2: 4, 4: 16}
+```
+
+---
+
+## Advanced Control Flow Features
+
+### Else with Loops
+Python supports an optional `else` block with `for` and `while` loops, which executes only if the loop completes normally (i.e., without a `break`).
+```python
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+else:
+    print("Loop completed without a break")
+```
+
+### Infinite Loops
+Use infinite loops with caution. They run indefinitely unless explicitly terminated.
+```python
+while True:
+    print("This is an infinite loop")
+    break  # Safeguard to prevent actual infinite looping
 ```
 
 ---
@@ -261,26 +504,233 @@ my_function()
 
 ## 5. Object-Oriented Programming (OOP)
 
-### Core Concepts
-- **Class**: Blueprint for creating objects.
-- **Object**: Instance of a class.
-- **Inheritance**: Mechanism to create a new class using an existing class.
-- **Encapsulation**: Hiding implementation details.
-- **Polymorphism**: Methods with the same name behaving differently in different contexts.
+Object-Oriented Programming (OOP) is a programming paradigm that uses objects and classes to structure software. Python fully supports OOP, providing features like inheritance, encapsulation, polymorphism, and abstraction.
 
-### Example
+## Key Concepts of OOP
+
+1. **Classes and Objects**
+   - A **class** is a blueprint for creating objects. It defines attributes (variables) and methods (functions) that the objects created from the class will have.
+   - An **object** is an instance of a class.
+
+### Example:
 ```python
-class Person:
+class Dog:
+    # Class attributes
+    species = "Canis familiaris"
+
+    # Constructor
     def __init__(self, name, age):
-        self.name = name
-        self.age = age
+        self.name = name  # Instance attribute
+        self.age = age    # Instance attribute
 
-    def introduce(self):
-        return f"Hi, I am {self.name} and I am {self.age} years old."
+    # Method
+    def bark(self):
+        return f"{self.name} says Woof!"
 
-person = Person("Alice", 25)
-print(person.introduce())
+# Creating an object
+my_dog = Dog("Buddy", 5)
+
+print(my_dog.name)  # Output: Buddy
+print(my_dog.bark())  # Output: Buddy says Woof!
 ```
+
+---
+
+2. **Encapsulation**
+   - Encapsulation is the bundling of data and methods that operate on that data into a single unit, usually a class.
+   - It also involves restricting direct access to some of an object's components (using private attributes).
+
+### Example:
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private attribute
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+            return amount
+        else:
+            return "Insufficient funds"
+
+    def get_balance(self):
+        return self.__balance
+
+# Creating an object
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())  # Output: 1500
+```
+
+---
+
+3. **Inheritance**
+   - Inheritance allows a class (child class) to inherit attributes and methods from another class (parent class).
+
+### Example:
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass  # Abstract method
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says Meow!"
+
+# Creating objects
+dog = Dog("Buddy")
+cat = Cat("Kitty")
+
+print(dog.speak())  # Output: Buddy says Woof!
+print(cat.speak())  # Output: Kitty says Meow!
+```
+
+---
+
+4. **Polymorphism**
+   - Polymorphism allows objects of different classes to be treated as objects of a common superclass. It is achieved through method overriding and interfaces.
+
+### Example:
+```python
+class Bird:
+    def fly(self):
+        return "Flying high!"
+
+class Penguin(Bird):
+    def fly(self):
+        return "Penguins can't fly."
+
+# Polymorphism in action
+animals = [Bird(), Penguin()]
+for animal in animals:
+    print(animal.fly())
+```
+
+---
+
+5. **Abstraction**
+   - Abstraction is the process of hiding implementation details and showing only the functionality.
+   - In Python, abstraction can be achieved using abstract base classes (ABCs) from the `abc` module.
+
+### Example:
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+# Creating an object
+rect = Rectangle(5, 10)
+print(rect.area())  # Output: 50
+print(rect.perimeter())  # Output: 30
+```
+
+---
+
+6. **Method Overriding**
+   - A child class can provide a specific implementation of a method already defined in its parent class.
+
+### Example:
+```python
+class Parent:
+    def greet(self):
+        return "Hello from Parent"
+
+class Child(Parent):
+    def greet(self):
+        return "Hello from Child"
+
+# Creating objects
+parent = Parent()
+child = Child()
+
+print(parent.greet())  # Output: Hello from Parent
+print(child.greet())   # Output: Hello from Child
+```
+
+---
+
+7. **Special (Magic/Dunder) Methods**
+   - Special methods in Python begin and end with double underscores (`__`). They allow you to define behavior for built-in operations.
+
+### Example:
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+    def __repr__(self):
+        return f"Point({self.x}, {self.y})"
+
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+
+print(p1 + p2)  # Output: Point(4, 6)
+```
+
+---
+
+8. **Composition**
+   - Composition is a way to combine objects to build complex systems. Instead of inheritance, classes can use other classes to achieve functionality.
+
+### Example:
+```python
+class Engine:
+    def start(self):
+        return "Engine started"
+
+class Car:
+    def __init__(self):
+        self.engine = Engine()
+
+    def drive(self):
+        return self.engine.start() + " and car is moving"
+
+# Creating an object
+car = Car()
+print(car.drive())  # Output: Engine started and car is moving
+```
+
+---
+
+## Best Practices for OOP
+
+1. **Follow the Single Responsibility Principle**: Each class should have one responsibility.
+2. **Use meaningful class and method names**.
+3. **Keep methods short and focused**.
+4. **Leverage inheritance and composition wisely**.
+5. **Avoid overusing inheritance**; prefer composition when appropriate.
 
 ---
 
