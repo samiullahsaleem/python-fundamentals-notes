@@ -8,7 +8,7 @@ Welcome to the **Python Fundamentals Notes** repository! This repository contain
 2. [Data Types and Variables](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#2-data-types-and-variables)
 3. [Control Flow Statements](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#control-flow-statements)
 4. [Functions](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#functions)
-5. [Object-Oriented Programming (OOP)](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#object-oriented-programming-oop)
+5. [Object-Oriented Programming (OOP)](#5-object-oriented-programming-oop)
 6. [Modules and Libraries](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#modules-and-libraries)
 7. [File Handling](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#file-handling)
 8. [Error and Exception Handling](https://github.com/samiullahsaleem/python-notes?tab=readme-ov-file#error-and-exception-handling)
