@@ -1,6 +1,6 @@
 # Python Notes
 
-Welcome to the **Python Fundamentals Notes** repository! This repository contains comprehensive notes covering the basics of Python programming, intended for beginners and intermediate learners. The notes include explanations, examples, and exercises to solidify your understanding.
+Welcome to the **Python Fundamentals Notes** repository! This repository contains comprehensive notes covering the basics of Python programming, intended for beginners and intermediate learners. The notes include explanations, examples, and exercises to solidify your understanding. 
 
 ## Table of Contents
 
